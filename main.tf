@@ -11,5 +11,5 @@ terraform {
 
 resource "local_file" "hello" {
   filename = "hello.txt"
-  content  = "hello terraform"
+  content  = "hello terraform v2"
 }
