@@ -6,28 +6,35 @@
 # 2. S3를 Terraform으로 만드려면 backend 없이 시작해야 함.
 # 따라서 로컬 state로 S3만 만들고 이후 S3 backend를 붙임.
 
-# terraform 블록에서 terraform 버전 몇 이상인지 명시.
-# 특히 provider는 AWS API 스펙 변화/버그 픽스 영향이 크기에 버전 합의하는 내용의 코드.
-
+# terraform 블록: 1.5.x 버전만 허용
+# AWS provider 5.x 버전만 허용
+# >=를 쓸 경우 의도치 않은 최신 버전이 설치될 수 있어 ~>를 사용.
+# 팀에서 같은 코드로 같은 결과를 내기 위해 버전 고정.
 terraform {
-  required_version = ">= 1.5.0"
+  required_version = "~> 1.5.0"
 
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = ">= 5.0.0"
+      version = "~> 5.0.0"
     }
   }
 }
 
-# provider "aws"가 필요한 이유는 키를 코드에 박지 않고 AWS CLI profile로 가져옴.
-# 인증은 .tf에 키를 쓰는것이 아닌 AWS CLI profile로 가져올 것.
+# aws configure로 설정한 프로파일과 리전을 사용.
+# aws configuere --profile dev로 명령어를 실행해 프로파일 생성 필요.
+# 기존 aws configure는 default 프로파일을 생성.
+# 실무에서는 profile을 코드에 고정하지 않고 환경 변수 또는 IAM Role 기반 인증 사용.
 provider "aws" {
   region  = "ap-northeast-2"
   profile = "dev" # ~/.aws/credentials에 있는 프로파일 이름을 의미.
 }
 
 # Terraform state 저장소용 S3 버킷
+# resource의 흐름.
+# 1. aws_s3_bucket이라는 aws provider에 선언되어 있는 provider type을 사용.
+# 2. terraform 코드 내에서 tf_state라는 이름으로 이 리소스를 참조.
+# 3. 아래에 aws_s3_bucket_public_access_block provider type에서 tf_state 리소스를 참조하여 해당 버킷에 퍼블릭 액세스 차단 설정을 함.
 resource "aws_s3_bucket" "tf_state" {
   bucket = "highko99-terraform-state-dev" # 전 세계 유니크해야 함
 }
