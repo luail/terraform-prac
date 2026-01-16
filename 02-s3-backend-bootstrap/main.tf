@@ -11,7 +11,7 @@
 # >=를 쓸 경우 의도치 않은 최신 버전이 설치될 수 있어 ~>를 사용.
 # 팀에서 같은 코드로 같은 결과를 내기 위해 버전 고정.
 terraform {
-  required_version = "~> 1.5.0"
+  required_version = "~> 1.10.0"
 
   required_providers {
     aws = {
