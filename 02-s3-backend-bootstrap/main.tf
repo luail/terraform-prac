@@ -35,8 +35,19 @@ provider "aws" {
 # 1. aws_s3_bucket이라는 aws provider에 선언되어 있는 provider type을 사용.
 # 2. terraform 코드 내에서 tf_state라는 이름으로 이 리소스를 참조.
 # 3. 아래에 aws_s3_bucket_public_access_block provider type에서 tf_state 리소스를 참조하여 해당 버킷에 퍼블릭 액세스 차단 설정을 함.
+
+# lifecycle prevent_destroy 설정:
+# 실수로 terraform destroy 명령어를 실행하여 S3 버킷이 삭제되는 것을 방지.
+# S3 버킷을 정말로 삭제하려면 해당 lifecycle 블록을 제거 후
+# terraform apply 실행. 이 단계에서는 아직 삭제 안됨. 단지 삭제 가능 상태로 바뀜.
+# 이후 terraform destroy 명령어를 실행해야 실제로 삭제됨.
+# 한번의 실수로 코드 삭제, 모듈 제거, 변수 변경 등의 중요 리소스가 날아가는 사고 방지.
 resource "aws_s3_bucket" "tf_state" {
   bucket = "highko99-terraform-state-dev" # 전 세계 유니크해야 함
+  
+    lifecycle {
+    prevent_destroy = true
+  }
 }
 
 # 퍼블릭 액세스 차단 (state는 절대 공개되면 안 됨)
