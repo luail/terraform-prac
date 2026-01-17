@@ -10,5 +10,5 @@
 # 본격 인프라는 04/05 같은 실제 스택 폴더에서 관리.
 
 resource "aws_s3_bucket" "test" {
-  bucket = "highko99-terraform-test-dev"
+  bucket = "highko99-terraform-test123456-dev"
 }
