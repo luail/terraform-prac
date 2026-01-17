@@ -11,7 +11,7 @@
 # 리소스 코드 옆에서 바뀔 경우 위험.
 
 terraform {
-  required_version = "~> 1.10.0"
+  required_version = "~> 1.14.0"
 
   required_providers {
     aws = {
