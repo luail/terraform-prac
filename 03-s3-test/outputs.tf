@@ -7,5 +7,5 @@
 # 상태 확인용 정도의 최소화하기 위함.
 
 output "example_bucket_name" {
-  value = aws_s3_bucket.example.bucket
+  value = aws_s3_bucket.test.bucket
 }

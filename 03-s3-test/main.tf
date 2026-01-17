@@ -9,6 +9,6 @@
 # 확인용 리소스 하나(테스트 버킷/간단한 IAM) 정도가 적절.
 # 본격 인프라는 04/05 같은 실제 스택 폴더에서 관리.
 
-resource "aws_s3_bucket" "example" {
-  bucket = "highko99-terraform-example-dev"
+resource "aws_s3_bucket" "test" {
+  bucket = "highko99-terraform-test-dev"
 }

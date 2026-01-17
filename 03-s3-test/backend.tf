@@ -14,7 +14,7 @@
 terraform {
   backend "s3" {
     bucket       = "highko99-terraform-state-dev"
-    key          = "03-s3-backend/terraform.tfstate"
+    key          = "03-s3-test/terraform.tfstate"
     region       = "ap-northeast-2"
     encrypt      = true
     use_lockfile = true
