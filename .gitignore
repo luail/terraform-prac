@@ -20,3 +20,7 @@ terraform.rc
 # Env files
 .env
 .env.*
+
+# Terraform
+*.tfvars
+terraform.tfvars

@@ -1,0 +1,16 @@
+// 04-eks/terraform.tfvars.example
+aws_region = "ap-northeast-2"
+project    = "devri"
+env        = "dev"
+
+cluster_version = "1.30"
+
+vpc_cidr  = "10.20.0.0/16"
+az_count  = 2
+
+node_instance_types = ["t3.large"]
+node_desired_size   = 2
+node_min_size       = 1
+node_max_size       = 4
+
+// copy terraform.tfvars.example terraform.tfvars로 복사 후 사용.
