@@ -1,6 +1,6 @@
 // 04-eks/terraform.tfvars.example
 aws_region = "ap-northeast-2"
-project    = "devri"
+project    = "eks-test"
 env        = "dev"
 
 cluster_version = "1.30"
