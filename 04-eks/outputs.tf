@@ -1,3 +1,4 @@
+// outputs.tf
 output "cluster_name" {
   value = module.eks.cluster_name
 }
@@ -24,4 +25,8 @@ output "public_subnets" {
 
 output "region" {
   value = var.aws_region
+}
+
+output "node_security_group_id" {
+  value = module.eks.node_security_group_id
 }

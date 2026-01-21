@@ -11,13 +11,11 @@ module "vpc" {
   private_subnets = [
     cidrsubnet(var.vpc_cidr, 4, 1),
     cidrsubnet(var.vpc_cidr, 4, 2),
-    cidrsubnet(var.vpc_cidr, 4, 3),
   ]
 
   public_subnets = [
     cidrsubnet(var.vpc_cidr, 4, 11),
     cidrsubnet(var.vpc_cidr, 4, 12),
-    cidrsubnet(var.vpc_cidr, 4, 13),
   ]
 
   enable_nat_gateway     = true

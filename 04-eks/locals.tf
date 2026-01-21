@@ -1,4 +1,4 @@
-// 04-eks/locals.tf
+// locals.tf
 data "aws_availability_zones" "available" {
   state = "available"
 }
@@ -14,5 +14,3 @@ locals {
     ManagedBy   = "Terraform"
   }
 }
-
-// 내부 계산 및 표준화용 local 변수 정의

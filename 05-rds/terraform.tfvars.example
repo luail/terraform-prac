@@ -1,0 +1,16 @@
+aws_region       = "ap-northeast-2"
+eks_state_bucket = "highko99-terraform-state-dev"
+eks_state_key    = "04-eks/terraform.tfstate"
+
+db_identifier = "test-mysql-dev"
+db_name       = "test"
+db_username   = "admin"
+db_password   = ""
+my_ip_cidr    = ""
+
+publicly_accessible = true
+engine_version      = "8.0"
+instance_class      = "db.t4g.micro"
+allocated_storage   = 20
+
+// copy terraform.tfvars.example terraform.tfvars

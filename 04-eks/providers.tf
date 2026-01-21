@@ -1,4 +1,4 @@
-// 04-eks/providers.tf
+// providers.tf
 provider "aws" {
   region = var.aws_region
 }
