@@ -14,18 +14,18 @@ resource "aws_security_group" "this" {
 
   ingress {
     description = "MySQL from my local IP"
-    from_port       = 3306
-    to_port         = 3306
-    protocol        = "tcp"
-    cidr_blocks     = [var.my_ip_cidr]
+    from_port   = 3306
+    to_port     = 3306
+    protocol    = "tcp"
+    cidr_blocks = [var.my_ip_cidr]
   }
 
-    ingress {
+  ingress {
     description     = "MySQL from EKS worker nodes SG"
     from_port       = 3306
     to_port         = 3306
     protocol        = "tcp"
-    cidr_blocks     = [data.terraform_remote_state.eks.outputs.node_security_group_id]
+    security_groups = [data.terraform_remote_state.eks.outputs.node_security_group_id]
   }
 
   egress {
