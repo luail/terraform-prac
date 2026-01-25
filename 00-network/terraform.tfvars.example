@@ -1,0 +1,8 @@
+aws_region = "ap-northeast-2"
+project    = "network-test"
+env        = "dev"
+
+vpc_cidr  = "10.20.0.0/16"
+az_count  = 2
+
+// copy terraform.tfvars.example terraform.tfvars로 복사 후 사용.
