@@ -10,10 +10,10 @@ variable "env" {
   type = string
 }
 
-variable "vpc_cidr" {
+variable "network_state_bucket" {
   type = string
 }
 
-variable "az_count" {
-  type = number
+variable "network_state_key" {
+  type = string
 }

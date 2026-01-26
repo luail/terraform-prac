@@ -1,0 +1,7 @@
+aws_region = "ap-northeast-2"
+project    = "network-test"
+env        = "dev"
+
+network_state_bucket = "highko99-terraform-state-dev"
+network_state_key    = "00-network/terraform.tfstate"
+// copy terraform.tfvars.example terraform.tfvars로 복사 후 사용.

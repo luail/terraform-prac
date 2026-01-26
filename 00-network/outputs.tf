@@ -13,3 +13,7 @@ output "public_subnets" {
 output "region" {
   value = var.aws_region
 }
+
+output "vpc_cidr" {
+  value = var.vpc_cidr
+}
